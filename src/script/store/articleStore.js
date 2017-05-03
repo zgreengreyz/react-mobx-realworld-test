@@ -1,14 +1,15 @@
 import { observable } from 'mobx-react'
 class ArticleStore {
-	@observable article = [];
+	@observable const articles = []
 
-	addArticle(){
-		this.article.push({
+	addArticle(title){
+		this.articles.push({
 			title: title,
-			body: body,
+			body: 'body',
 			date: Date()
-		})
+		});
 	}
+
 }
 
 export default ArticleStore

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react'
-import {observer} from 'mobx-react'
+import { observer } from 'mobx-react'
 
 const Banner = props => {
   return (
@@ -15,35 +15,32 @@ const Banner = props => {
     </div>
   );
 };
-const Container = props => {
-	article = props.article
-	if(article.length === 0){
-		return(
-			<div className="article-preview">No articles yet</div>
-		)
-	}
-	return(
-		<div className="article-preview">
+
+@observer
+class Content extends React.Component{
+	
+	render() {
+		const articleStore = this.props;
+		if(articleStore.length === 0){
+			return(
+				<div className="article-preview">No articles yet</div>
+			)
+		}
+
+		return (
+			<Banner />,
+			<div className="article-preview">
 			<div className="article-meta">
 	      		<div className="info">
-			      <span className="date">
-			        {article.date}
+			      <span className="date" article={articleStore}>
+			        {articleStore.articles.date}
 			      </span>
-			      <h1>article.title}</h1>
-			      <p>{article.body}</p>
+			      <h1>{articleStore.articles.title}</h1>
+			      <p>{articleStore.articles.body}</p>
 			    </div>
 			</div>
 	      
 	    </div>
-	);
-}
-
-@observer
-class Content extends React.Component{
-	render() {
-		return (
-			<Banner />,
-			<Container />
 			)
 	}
 }
