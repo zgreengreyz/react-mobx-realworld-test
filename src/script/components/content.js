@@ -1,7 +1,12 @@
 'use strict';
 
 import React from 'react'
-import { observer } from 'mobx-react'
+import {Link} from 'react-router'
+import { observer, inject } from 'mobx-react'
+import { observable } from 'mobx-react'
+
+import agent from '../agent'
+import ArticlePage from './articles/articlePage'
 
 const Banner = props => {
   return (
@@ -18,30 +23,16 @@ const Banner = props => {
 
 @observer
 class Content extends React.Component{
-	
-	render() {
-		const articleStore = this.props;
-		if(articleStore.length === 0){
-			return(
-				<div className="article-preview">No articles yet</div>
-			)
-		}
 
-		return (
-			<Banner />,
-			<div className="article-preview">
-			<div className="article-meta">
-	      		<div className="info">
-			      <span className="date" article={articleStore}>
-			        {articleStore.articles.date}
-			      </span>
-			      <h1>{articleStore.articles.title}</h1>
-			      <p>{articleStore.articles.body}</p>
-			    </div>
+	render(){
+		
+		return(
+			<div className="home-page">
+				<Banner />
+				<ArticlePage />
+				
 			</div>
-	      
-	    </div>
-			)
+		)
 	}
 }
 

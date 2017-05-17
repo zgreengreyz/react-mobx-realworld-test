@@ -23,19 +23,19 @@ const VisitorView = props => {
         </ul>
     );
 };
-@observer
+
 class Header extends React.Component {
 
 	render() {
 		return (
 			<nav className="navbar navbar-light">
 		        <div className="container">
-		        <Link className="navbar-brand" href="index.html">conduit</Link>
+		        <Link className="navbar-brand" href="#">conduit</Link>
 		        	<VisitorView />
 			    </div>
 			</nav>
 		);
 	}
 }
-console.log(Modal.state);
+
 export default Header;
